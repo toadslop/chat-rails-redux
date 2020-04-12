@@ -1,0 +1,36 @@
+.channel-list {
+  min-width: 200px;
+  background-color: $light-green;
+  height: 100%;
+  border-right: 2px solid $dark-grey;
+  h2 {
+    font-weight: bold;
+    margin: 17px 0;
+  }
+  #welcome {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 16px 0;
+  }
+  .active {
+    font-weight: bold;
+  }
+  .channel-line {
+    cursor: pointer;
+    margin-left: 8px;
+    color: $magenta;
+    text-decoration: none;
+  }
+  .sidebar-section {
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 0 20px;
+  }
+  .channels {
+    margin: 8px 0;
+  }
+  #channels-heading {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
