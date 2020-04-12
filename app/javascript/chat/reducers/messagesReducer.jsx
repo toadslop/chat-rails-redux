@@ -2,7 +2,7 @@
 const messagesReducer = (state = null, action) => {
   switch (action.type) {
     case 'GET_MESSAGES':
-      return action.payload.messages || [];
+      return action.payload || [];
     case 'CREATE_MESSAGE':
       let newMessages = state.slice(0);
       newMessages.push(action.payload);

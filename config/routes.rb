@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 #, defaults: { format: :json }
   namespace :api do
     namespace :v1 do
-      resources :channels, only: [] do
-        resources :messages, only: [ :index, :create ]
+      resources :channels, only: [:index] do
+        resources :messages, only: [:index, :create]
       end
     end
   end
 
-  resources :channels, only: [ :show ]
+  resources :channels, only: [:show]
   root to: 'channels#show'
 end

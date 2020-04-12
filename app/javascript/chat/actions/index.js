@@ -1,7 +1,17 @@
 /* eslint-disable import/prefer-default-export */
+const baseUrl = "/api/v1/channels/"
+
+export function getChannels() {
+  const promise = fetch(`${baseUrl}`).
+    then(response => response.json());
+  return {
+    type: 'GET_CHANNELS',
+    payload: promise
+  }
+}
 
 export function getMessages(selectedChannel) {
-  const promise = fetch(`https://wagon-chat.herokuapp.com/${selectedChannel}/messages`)
+  const promise = fetch(`${baseUrl}${selectedChannel}/messages`)
     .then(response => response.json());
   return {
     type: 'GET_MESSAGES',

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getMessages } from '../actions';
+import { getMessages, getChannels } from '../actions';
 
 class ChannelList extends Component {
   componentWillReceiveProps(nextProps) {
@@ -12,11 +12,15 @@ class ChannelList extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getChannels();
+  }
+
   classes = "channel-line";
 
   render() {
     const { currentUser, channels, channelFromParams } = this.props;
-    console.log("from channel list", channelFromParams);
+    console.log(channels);
     return (
       <div
         className="channel-list"
@@ -33,12 +37,12 @@ class ChannelList extends Component {
             {channels.map((channel) => {
               return (
                 <p
-                  id={channel}
-                  key={channel}
-                  className={(channel === channelFromParams ? `${this.classes} active` : this.classes)}
+                  id={channel.name}
+                  key={channel.name}
+                  className={(channel.name === channelFromParams ? `${this.classes} active` : this.classes)}
                 >
-                  <Link to={`/${channel}`}>
-                    #{channel}
+                  <Link to={`/channels/${channel.name}`}>
+                    #{channel.name}
                   </Link>
                 </p>
               );
@@ -52,7 +56,7 @@ class ChannelList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { getMessages },
+    { getMessages, getChannels },
     dispatch
   );
 }

@@ -11,3 +11,18 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+#chat_app {
+  height: 100%;
+}
+
+body {
+  font-family: Helvetica;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+.app {
+  display: flex;
+  height: 100%;
+}

@@ -17,10 +17,10 @@ class MessageList extends Component {
     const scrollHeight = this.scroll.current.scrollHeight;
     this.scroll.current.scrollTop = scrollHeight;
     this.props.getMessages(this.props.channelFromParams);
-    this.intervalId = window.setInterval(() => {
-      this.props.getMessages(this.props.channelFromParams);
-      console.log("message list, did update", this.props.channelFromParams);
-    }, 5000);
+    // this.intervalId = window.setInterval(() => {
+    //   this.props.getMessages(this.props.channelFromParams);
+    //   console.log("message list, did update", this.props.channelFromParams);
+    // }, 5000);
   }
 
   componentDidUpdate() {
