@@ -16,9 +16,22 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
+    @content = message_params['content']
+    @message = Message.create!(content: @content, user: current_user, channel: @channel)
+    @formatted_message = {
+      id: @message.id,
+      author: User.find(@message.user_id).email,
+      content: @message.content,
+      created_at: @message.created_at
+    }
+    render json: @formatted_message
   end
 
   private
+
+  def message_params
+    params.require(:message).permit(:content)
+  end
 
   def find_channel
     @channel = Channel.find_by(name: params["channel_id"])

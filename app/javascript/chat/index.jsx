@@ -9,17 +9,20 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import App from './components/app';
 import messagesReducer from './reducers/messagesReducer';
 import channelsReducer from './reducers/channelsReducer';
+import inputValueReducer from './reducers/inputValueReducer';
 
 const chatContainer = document.getElementById('chat_app');
 
 const initialState = {
   messages: [],
   channels: [], // TODO: get that from Rails DB.
+  inputValue: ''
 };
 
 const reducers = combineReducers({
   messages: messagesReducer,
-  channels: channelsReducer
+  channels: channelsReducer,
+  inputValue: inputValueReducer
 });
 
 const middlewares = applyMiddleware(logger, ReduxPromise);

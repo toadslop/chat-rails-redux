@@ -20,6 +20,7 @@ export default class Message extends Component {
 
   render() {
     const { message } = this.props;
+    console.log("in message render", message);
     return (
       <div className="message">
         <div className="message-heading">

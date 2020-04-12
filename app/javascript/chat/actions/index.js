@@ -19,20 +19,22 @@ export function getMessages(selectedChannel) {
   };
 }
 
-export function createMessage(channel, author, content) {
+export function createMessage(channel, content) {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
   const body = {
-    author,
     content
   };
-
-  const promise = fetch(`https://wagon-chat.herokuapp.com/${channel}/messages`, {
+  console.log(body);
+  const promise = fetch(`${baseUrl}${channel}/messages`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
     },
+    credentials: 'same-origin',
     body: JSON.stringify(body)
-  }).then(r => r.json());
+  }).then(response => response.json());
   return {
     type: "CREATE_MESSAGE",
     payload: promise

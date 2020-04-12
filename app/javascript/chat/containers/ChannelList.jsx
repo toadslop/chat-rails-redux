@@ -20,7 +20,6 @@ class ChannelList extends Component {
 
   render() {
     const { currentUser, channels, channelFromParams } = this.props;
-    console.log(channels);
     return (
       <div
         className="channel-list"
