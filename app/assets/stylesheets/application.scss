@@ -13,14 +13,16 @@
 @import "pages/index";
 
 #chat_app {
+  overflow: hidden;
   height: 100%;
 }
 
 body {
   font-family: Helvetica;
   height: 100vh;
-  position: sticky;
-  top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .app {
   display: flex;
